@@ -16,6 +16,7 @@ class UrlManager extends \yii\web\UrlManager
         
         // create curl object
         $curl = new CurlPost($api_url);
+ 
                  
         try {
             // execute the request
@@ -35,6 +36,7 @@ class UrlManager extends \yii\web\UrlManager
         
         $url_info = json_decode($this->parseUrl(),1);
           
+        var_dump($url_info); exit;
         
         if(!(isset($url_info['error']) && $url_info['error'] == 1)){                        
         
