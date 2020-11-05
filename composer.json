@@ -21,8 +21,8 @@
 	],
 	"minimum-stability" : "stable",
 	"support" : {
-		"source" : "https://github.com/izisoft/yii2-geoip",
-		"issues" : "https://github.com/izisoft/yii2-geoip/issues",
+		"source" : "https://github.com/izisoft/yii2-cross-site",
+		"issues" : "https://github.com/izisoft/yii2-cross-site/issues",
 		"email" : "zinzinx8@gmail.com"
 	},
 	"require" : {
