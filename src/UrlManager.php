@@ -12,11 +12,11 @@ class UrlManager extends \yii\web\UrlManager
     {
         $url = trim(Yii::$app->request->url,'/');
         
-        $api_url = implode('/', [Yii::$app->params['api_site_url'],'api',Yii::$app->params['api_version'] , 'request']);
+        $api_url = implode('/', [Yii::$app->params['api_site_url'],'api',Yii::$app->params['api_version'] , 'request']);        
         
         // create curl object
         $curl = new CurlPost($api_url);
-                 
+
         try {
             // execute the request
             return $curl([
@@ -34,7 +34,6 @@ class UrlManager extends \yii\web\UrlManager
     {
         
         $url_info = json_decode($this->parseUrl(),1);
-          
         
         if(!(isset($url_info['error']) && $url_info['error'] == 1)){                        
         

@@ -17,7 +17,11 @@ class View extends \yii\web\View
         $partialFile = $path . DIRECTORY_SEPARATOR . trim($_partial_, DIRECTORY_SEPARATOR) . '.php';
         
         if(file_exists($partialFile)){
-            return $this->renderPhpFile($partialFile, $_params_ );
+            if(isset($_params_['output']) && $_params_['output'] == 'text'){
+		        return $this->renderPhpFile($partialFile, $_params_ );
+		    }
+		    
+            echo $this->renderPhpFile($partialFile, $_params_ );
         }else{
 
             // render partial view if exist
@@ -27,7 +31,11 @@ class View extends \yii\web\View
             $partialFile = $path . DIRECTORY_SEPARATOR . trim($_partial_, DIRECTORY_SEPARATOR) . '.php';
         
             if(file_exists($partialFile)){
-                return $this->renderPhpFile($partialFile, $_params_ );
+                if(isset($_params_['output']) && $_params_['output'] == 'text'){
+			        return $this->renderPhpFile($partialFile, $_params_ );
+			    }
+			    
+				echo $this->renderPhpFile($partialFile, $_params_ );
             }
         }
     }

@@ -20,10 +20,26 @@ class CrossSite extends \yii\base\Component
                 
     }
     
+
+    public function getLogo($code = 'main')
+    {
+        $api_url = implode('/', [$this->_api_url , 'sweb/logo']);
+        // create curl object
+        $curl = new CurlPost($api_url);
+        
+        $menu = $curl([
+            'code' => $code,
+            'domain' => $this->_domain,
+            'access_token'   => $this->_token,
+        ]);
+        
+        return json_decode($menu,1);        
+    }
+
     
     public function getMenu($code)
     {
-        $api_url = implode('/', [$this->_api_url , 'category/menu']);
+        $api_url = implode('/', [$this->_api_url , 'sweb/menu']);
         // create curl object
         $curl = new CurlPost($api_url);
         
@@ -38,7 +54,7 @@ class CrossSite extends \yii\base\Component
     
     public function getCategoryDetail($url)
     {
-        $api_url = implode('/', [$this->_api_url , 'category/detail']);
+        $api_url = implode('/', [$this->_api_url , 'sweb/detail']);
         // create curl object
         $curl = new CurlPost($api_url);
         
