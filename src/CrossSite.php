@@ -20,6 +20,9 @@ class CrossSite extends \yii\base\Component
                 
     }
     
+    /**
+     * Get logo
+     */
 
     public function getLogo($code = 'main')
     {
@@ -36,6 +39,46 @@ class CrossSite extends \yii\base\Component
         return json_decode($menu,1);        
     }
 
+
+    /**
+     * Get ADV
+     */
+
+    public function getAdvert($code)
+    {
+        $api_url = implode('/', [$this->_api_url , 'sweb/advert']);
+        // create curl object
+        $curl = new CurlPost($api_url);
+        
+        $menu = $curl([
+            'code' => $code,
+            'domain' => $this->_domain,
+            'access_token'   => $this->_token,
+        ]);
+        
+        return json_decode($menu,1);        
+    }
+
+    /**
+     * Get ADV
+     */
+
+    public function getWidgets($code)
+    {
+        $api_url = implode('/', [$this->_api_url , 'sweb/widgets']);
+        // create curl object
+        $curl = new CurlPost($api_url);
+        
+        $menu = $curl([
+            'code' => $code,
+            'domain' => $this->_domain,
+            'access_token'   => $this->_token,
+        ]);
+        
+        return json_decode($menu,1);        
+    }
+
+    
     
     public function getMenu($code)
     {
