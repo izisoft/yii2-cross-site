@@ -60,7 +60,7 @@ class CrossSite extends \yii\base\Component
     }
 
     /**
-     * Get ADV
+     * Get Widgets
      */
 
     public function getWidgets($code)
@@ -78,7 +78,39 @@ class CrossSite extends \yii\base\Component
         return json_decode($menu,1);        
     }
 
+
+    /**
+     * Get Widgets
+     */
+
+    public function getWidget($code, $params = [])
+    {
+        $api_url = implode('/', [$this->_api_url , 'sweb/widget']);
+        // create curl object
+        $curl = new CurlPost($api_url);
+        
+        $menu = $curl([
+            'code' => $code,
+            'domain' => $this->_domain,
+            'access_token'   => $this->_token,
+        ]);
+
+        $menu = json_decode($menu,1);
+
+        if(isset($menu['error']) && $menu['error']==1 && isset($params['default']) && !empty($params['default'])){
+            return array_merge([
+
+            ],
+            $params['default']);
+        }
+        
+        return $menu;     
+    }
     
+
+    /**
+     * Menu
+     */
     
     public function getMenu($code)
     {
