@@ -37,6 +37,8 @@ class CurlPost
         $error    = curl_error($ch);
         $errno    = curl_errno($ch); 
 
+        // view($response,1,1);
+
         if (is_resource($ch)) {
             curl_close($ch);
         }
