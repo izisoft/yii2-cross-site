@@ -129,7 +129,7 @@ class CrossSite extends \yii\base\Component
     
     public function getCategoryDetail($url)
     {
-        $api_url = implode('/', [$this->_api_url , 'sweb/detail']);
+        $api_url = implode('/', [$this->_api_url , 'sweb/category-detail']);
         // create curl object
         $curl = new CurlPost($api_url);
         

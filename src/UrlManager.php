@@ -19,6 +19,9 @@ class UrlManager extends \yii\web\UrlManager
 
         try {
             // execute the request
+
+            defined('__DETAIL_URL__') or define('__DETAIL_URL__', $url);
+
             return $curl([
                 'url' => $url,
                 'domain' => $_SERVER['HTTP_HOST'],

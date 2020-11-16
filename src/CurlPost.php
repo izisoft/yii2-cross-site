@@ -13,6 +13,7 @@ class CurlPost
      */
     public function __construct($url, array $options = [])
     {
+        // $this->url = str_replace('http://', 'https://', $url);
         $this->url = $url;
         $this->options = $options;
     }
